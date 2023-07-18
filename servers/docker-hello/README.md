@@ -8,3 +8,8 @@ docker build --tag image-hello .
 ```
 docker run --detach --publish 3002:3002 --name server-hello image-hello
 ```
+
+##### teste
+```
+curl localhost:3002
+```
