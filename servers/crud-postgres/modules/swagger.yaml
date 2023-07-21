@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: Swagger Match - OpenAPI 3.0
+  version: 1.0.11
+  contact:
+    name: Carlos Lenz
+  license:
+    name: MIT
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:3003
+tags:
+  - name: match-cloud
+    description: Everything about your Cloud
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io

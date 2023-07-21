@@ -5,11 +5,32 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm start",
+      "name": "crud-postgres server",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/servers/crud-postgres"
+    },
+    {
       "command": "npm run generation",
       "name": "crud-postgres generation",
       "request": "launch",
       "type": "node-terminal",
       "cwd": "${workspaceFolder}/servers/crud-postgres"
+    },
+    {
+      "command": "npm run migration",
+      "name": "crud-postgres migration",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/servers/crud-postgres"
+    },
+    {
+      "command": "npm start",
+      "name": "swagger server",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/servers/swagger"
     }
   ]
 }

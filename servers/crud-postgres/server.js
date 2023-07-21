@@ -1,26 +1,30 @@
+require('express-async-errors')
 const express = require('express')
-const helmet = require('helmet')
-const cors = require('cors')
+const yaml = require('yamljs');
+const swaggerUi = require('swagger-ui-express')
 
 const app = express()
 
 const port = Number(process.env.PORT)
 if (!port) {
-  throw new Error('variável de ambiente PORT sem valor')
+  throw new Error('variável de ambiente PORT não foi configurada')
 }
 
-app.use(helmet())
-app.use(cors())
-app.use(express.json())
+const swaggerSpec = {
+  ...yaml.load('./modules/swagger.yaml'),
+  ...yaml.load('./modules/contato/swagger.yaml'),
+  ...yaml.load('./modules/produto/swagger.yaml')
+}
 
-let count = 0
-
-app.get('/', (req, res) => {
-  count++
-  res.json({ hello: 'world', date: new Date(), count, port })
-  console.log({ count, port })
-})
-
-app.listen(port, () => {
-  console.log(`Servidor 'hello' iniciado em ${new Date()} na porta ${port}`)
-})
+app
+  .use(require('helmet')())
+  .use(require('cors')())
+  .use(express.json())
+  .use('/produto', require('./modules/produto/router'))
+  .use('/contato', require('./modules/contato/router'))
+  .use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+  .all('*', require('./middlewares/handleError404'))
+  .use(require('./middlewares/handleErrors'))
+  .listen(port, () => {
+    console.log(`Servidor 'crud-postgres' iniciado em ${new Date()} na porta ${port}`)
+  })

@@ -1,18 +1,18 @@
-const Sequelize = require('sequelize');
-const database = require('../util/db');
+const { INTEGER, STRING, DATEONLY } = require('sequelize')
+const postgres = require('../utils/postgres')
 
-module.exports = database.define('contato', {
+module.exports = postgres.define('contato', {
   id: {
-    type: Sequelize.INTEGER,
+    type: INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true
   },
   nome: {
-    type: Sequelize.STRING(60),
+    type: STRING(60),
     allowNull: false
   },
-  renda: Sequelize.INTEGER,
-  dataNascimento: Sequelize.DATEONLY,
-  idade: Sequelize.INTEGER
+  renda: INTEGER,
+  dataNascimento: DATEONLY,
+  idade: INTEGER
 })

@@ -1,21 +1,21 @@
-const Sequelize = require('sequelize');
-const database = require('../util/db');
+const { INTEGER, DOUBLE, STRING, DATEONLY } = require('sequelize')
+const postgres = require('../utils/postgres')
 
-const Produto = database.define('produto', {
+const Produto = postgres.define('produto', {
     id: {
-        type: Sequelize.INTEGER,
+        type: INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
     nome: {
-        type: Sequelize.STRING,
+        type: STRING(50),
         allowNull: false
     },
     preco: {
-        type: Sequelize.DOUBLE
+        type: DOUBLE
     },
-    descricao: Sequelize.STRING
+    descricao: STRING
 })
 
 module.exports = Produto;
