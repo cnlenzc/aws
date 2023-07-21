@@ -1,0 +1,8 @@
+openapi: 3.0.0
+info:
+  title: Meu Servidor Node.js CRUD com Swagger (YAML)
+  version: 1.0.0
+  description: Documentação da API do meu servidor Node.js com operações CRUD usando Swagger (YAML)
+servers:
+  - url: http://localhost:3000
+    description: Servidor de desenvolvimento

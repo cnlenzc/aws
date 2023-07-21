@@ -1,0 +1,86 @@
+paths:
+  /api/users:
+    get:
+      summary: Lista todos os usuários
+      responses:
+        '200':
+          description: Retorna uma lista de todos os usuários.
+
+  /api/users/{id}:
+    get:
+      summary: Obtém um usuário por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do usuário a ser obtido
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Retorna os detalhes do usuário.
+        '404':
+          description: Usuário não encontrado.
+
+  /api/users:
+    post:
+      summary: Cria um novo usuário
+      requestBody:
+        description: Dados do usuário a ser criado
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '201':
+          description: Usuário criado com sucesso.
+
+  /api/users/{id}:
+    put:
+      summary: Atualiza um usuário por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do usuário a ser atualizado
+          schema:
+            type: integer
+      requestBody:
+        description: Dados do usuário a serem atualizados
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso.
+        '404':
+          description: Usuário não encontrado.
+
+  /api/users/{id}:
+    delete:
+      summary: Exclui um usuário por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do usuário a ser excluído
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário excluído com sucesso.
+        '404':
+          description: Usuário não encontrado.
