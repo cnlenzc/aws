@@ -1,13 +1,25 @@
 paths:
-  /contato:
+  /api/contato:
+    get:
+      tags:
+        - contato
+      summary: listar contatos
+      operationId: getContatos
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/contato"
     post:
       tags:
         - contato
-      summary: Add a new contato
-      description: Add a new contato
+      summary: adicionar um contato
       operationId: addContato
       requestBody:
-        description: Create a new contato
         content:
           application/json:
             schema:
@@ -22,32 +34,15 @@ paths:
                 $ref: "#/components/schemas/contato"
         "400":
           description: Invalid input
+  /api/contato/{id}:
     get:
       tags:
         - contato
-      summary: List all contato
-      description: Returns a list of contato
-      operationId: getContatos
-      responses:
-        "200":
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/contato"
-  /contato/{id}:
-    get:
-      tags:
-        - contato
-      summary: Find contato by ID
-      description: Returns a single contato
+      summary: consultar um contato
       operationId: getcontatoById
       parameters:
         - name: id
           in: path
-          description: ID of contato to return
           required: true
           schema:
             type: integer
@@ -65,18 +60,15 @@ paths:
     put:
       tags:
         - contato
-      summary: Update an existing contato
-      description: Update an existing contato by Id
-      operationId: updatecontato
+      summary: alterar os dados de um contato
+      operationId: updateContato
       parameters:
         - name: id
           in: path
-          description: contato id to delete
           required: true
           schema:
             type: integer
       requestBody:
-        description: Update an existent contato
         content:
           application/json:
             schema:
@@ -100,13 +92,11 @@ paths:
     delete:
       tags:
         - contato
-      summary: Deletes a contato
-      description: delete a contato
+      summary: remover um contato
       operationId: deleteContato
       parameters:
         - name: id
           in: path
-          description: contato id to delete
           required: true
           schema:
             type: integer
@@ -125,55 +115,3 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Info not found
-components:
-  schemas:
-    contato:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 10
-        nome:
-          type: string
-          example: João da Silva
-        sexo:
-          type: string
-          enum:
-            - masculino
-            - feminino
-            - outro
-            - não informado
-        renda:
-          type: integer
-          example: 5000
-        dataNascimento:
-          type: date
-          example: 1998-10-02
-        idade:
-          type: integer
-          example: 53
-    contatoPost:
-      required:
-        - name
-      type: object
-      properties:
-        nome:
-          type: string
-          example: Maria José
-        sexo:
-          type: string
-          example: feminino
-          enum:
-            - masculino
-            - feminino
-            - outro
-            - não informado
-        renda:
-          type: integer
-          example: 5000
-        dataNascimento:
-          type: date
-          example: 1996-05-27
-        idade:
-          type: integer
-          example: 38

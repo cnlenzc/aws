@@ -4,10 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "prestart": "npm install",
     "start": "node -r dotenv/config server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon -r dotenv/config server.js",
     "migration": "node -r dotenv/config migration.js",
-    "generation": "node -r dotenv/config generation.js"
+    "generation": "node -r dotenv/config generation.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Carlos Neves Lenz Cesar",
   "license": "MIT",
@@ -18,11 +20,13 @@
     "helmet": "^7.0.0",
     "pg": "^8.11.1",
     "sequelize": "^6.32.1",
+    "swagger-ui-express": "^5.0.0",
     "unique-names-generator": "^4.7.1",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
   },
   "engines": {
     "node": ">=20.4.0",

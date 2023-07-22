@@ -12,7 +12,8 @@ if (!port) {
 
 const swaggerSpec = {
   ...yaml.load('./modules/swagger.yaml'),
-  ...yaml.load('./modules/contato/swagger.yaml'),
+  ...yaml.load('./modules/contato/swagger/paths.yaml'),
+  ...yaml.load('./modules/contato/swagger/schemas.yaml'),
   ...yaml.load('./modules/produto/swagger.yaml')
 }
 
@@ -20,8 +21,7 @@ app
   .use(require('helmet')())
   .use(require('cors')())
   .use(express.json())
-  .use('/produto', require('./modules/produto/router'))
-  .use('/contato', require('./modules/contato/router'))
+  .use('/api', require('./modules/router'))
   .use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
   .all('*', require('./middlewares/handleError404'))
   .use(require('./middlewares/handleErrors'))

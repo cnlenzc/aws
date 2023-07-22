@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm run start-dev",
+      "name": "crud-postgres server - dev",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/servers/crud-postgres"
+    },
+    {
       "command": "npm start",
       "name": "crud-postgres server",
       "request": "launch",

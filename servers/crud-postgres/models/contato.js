@@ -1,7 +1,7 @@
 const { INTEGER, STRING, DATEONLY } = require('sequelize')
 const postgres = require('../utils/postgres')
 
-module.exports = postgres.define('contato', {
+const model = postgres.define('contato', {
   id: {
     type: INTEGER,
     autoIncrement: true,
@@ -16,3 +16,17 @@ module.exports = postgres.define('contato', {
   dataNascimento: DATEONLY,
   idade: INTEGER
 })
+
+const fieldsReadwrite = [
+  'nome', 'renda', 'dataNascimento', 'idade'
+]
+
+const fieldsReadonly = [
+  'id', 'createdAt', 'updatedAt', ...fieldsReadwrite
+]
+
+module.exports = {
+  model,
+  fieldsReadonly,
+  fieldsReadwrite
+}

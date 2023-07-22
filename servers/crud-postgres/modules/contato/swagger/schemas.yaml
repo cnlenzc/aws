@@ -1,0 +1,52 @@
+components:
+  schemas:
+    contato:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10
+        nome:
+          type: string
+          example: João da Silva
+        sexo:
+          type: string
+          enum:
+            - masculino
+            - feminino
+            - outro
+            - não informado
+        renda:
+          type: integer
+          example: 5000
+        dataNascimento:
+          type: date
+          example: 1998-10-02
+        idade:
+          type: integer
+          example: 53
+    contatoPost:
+      required:
+        - name
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Maria José
+        sexo:
+          type: string
+          example: feminino
+          enum:
+            - masculino
+            - feminino
+            - outro
+            - não informado
+        renda:
+          type: integer
+          example: 5000
+        dataNascimento:
+          type: date
+          example: 1996-05-27
+        idade:
+          type: integer
+          example: 38
