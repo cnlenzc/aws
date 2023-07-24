@@ -33,11 +33,18 @@
       "cwd": "${workspaceFolder}/servers/crud-postgres"
     },
     {
-      "command": "npm start",
-      "name": "swagger server",
+      "command": "npm test",
+      "name": "crud-postgres test",
       "request": "launch",
       "type": "node-terminal",
-      "cwd": "${workspaceFolder}/servers/swagger"
+      "cwd": "${workspaceFolder}/servers/crud-postgres"
+    },
+    {
+      "command": "npm run coverage",
+      "name": "crud-postgres coverage",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/servers/crud-postgres"
     }
   ]
 }
