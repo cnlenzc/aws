@@ -3,3 +3,4 @@ aws s3 ls
 aws configure
 aws configure sso
 aws sso login
+aws configure list-profiles
