@@ -4,6 +4,14 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
+    {
+      "command": "npm start",
+      "name": "Run cognito",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/node-samples/cognito"
+    },
     {
       "command": "npm run start-dev",
       "name": "crud-postgres server - dev",
